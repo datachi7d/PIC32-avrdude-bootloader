@@ -230,8 +230,16 @@ DEF_mikroe-clicker=-D_BOARD_MIKROE_PIC32MX_CLICKER_
 LKR_mikroe-clicker=MX3-7-boot-linkerscript.ld
 CFL_mikroe-clicker=-mips16
 
-CFLAGS=-mprocessor=${MCU_${BOARD}} ${DEF_${BOARD}} ${CFL_${BOARD}} -Os -mno-float -I.
-ASFLAGS=-Wa,--gdwarf-2 -mprocessor=${MCU_${BOARD}} ${DEF_${BOARD}} ${CFL_${BOARD}} -Os -mno-float -I.
+BIN_mikroe-6lowpan-clicker=MIKROE_6LOWPAN_CLICKER
+OBJ_mikroe-6lowpan-clicker=main.o usb.o cdcacm.o
+CRT_mikroe-6lowpan-clicker=crt0.S
+MCU_mikroe-6lowpan-clicker=32MX534F064H
+DEF_mikroe-6lowpan-clicker=-D_BOARD_MIKROE_PIC32MX_CLICKER_
+LKR_mikroe-6lowpan-clicker=MX3-7-split-boot-linkerscript.ld
+CFL_mikroe-6lowpan-clicker=-mips16
+
+CFLAGS=-mprocessor=${MCU_${BOARD}} ${DEF_${BOARD}} ${CFL_${BOARD}} -O1 -mno-float -I.
+ASFLAGS=-Wa,--gdwarf-2 -mprocessor=${MCU_${BOARD}} ${DEF_${BOARD}} ${CFL_${BOARD}} -O1 -mno-float -I.
 LDFLAGS=-mprocessor=${MCU_${BOARD}} -nostdlib -nostartfiles ${CFL_${BOARD}} -mno-float -T ${LKR_${BOARD}} -Wl,--gc-sections -ffunction-sections -fdata-sections
 
 # Default target will list all the available targets
